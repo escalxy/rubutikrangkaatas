@@ -1,5 +1,4 @@
 #include "MPU.h"
-#include "katup.h"
 #include "pompa.h"
 #include "servo.h"
 #include "stepper.h"
@@ -8,8 +7,7 @@
 #define RX2_PIN 19
 
 Mpu sensorMpu;
-Katup selenoid;
-Pompa vakum;
+katupVakum katupVakum;
 gerakServo servo; 
 GerakStepper lengan;
 
@@ -21,10 +19,10 @@ void setup() {
   Serial2.println(">> Koneksi berhasil ke ESP");
 
   sensorMpu.setup();
-  selenoid.setup();
-  vakum.setup();
+  katupVakum.setup();
   servo.setup();
   lengan.setup();
+
 }
 
 void perintah(String perintah) {
@@ -46,12 +44,20 @@ void perintah(String perintah) {
    } 
   else if (perintah == "circle") {
     Serial.println("....");
-    vakum.nyalaMatiVakum(); 
-   } 
-  else if (perintah == "triangle") {
-    Serial.println("...");
-    selenoid.bukaTutupKatup(); 
-    }
+    katupVakum.bukaKatup();
+  }
+  else if (perintah == "circle") {
+    Serial.println("....");
+    katupVakum.tutupKatup();
+  }
+  else if (perintah == "circle") {
+    Serial.println("....");
+    katupVakum.matiVakum();
+  }
+  else if (perintah == "circle") {
+    Serial.println("....");
+    katupVakum.nyalaVakum();
+  }
   else {
     Serial.println("Perintah tidak dikenal: " + perintah);
     }
