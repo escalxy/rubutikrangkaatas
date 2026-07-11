@@ -8,8 +8,8 @@ class katupVakum {
   void setup() {
     pinMode(RELAY_KATUP, OUTPUT);
     pinMode(RELAY_POMPA, OUTPUT);
-    digitalWrite(RELAY_POMPA, 1); // 1 = kondisi off, 0 = kondisi on
-    digitalWrite(RELAY_KATUP, 1); // 1 = kondisi off, 0 = kondisi on
+    digitalWrite(RELAY_POMPA, 0); // 1 = kondisi off, 0 = kondisi on
+    digitalWrite(RELAY_KATUP, 0); // 1 = kondisi off, 0 = kondisi on
   }
 
   void bukaKatup() {
