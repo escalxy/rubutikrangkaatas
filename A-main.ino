@@ -44,19 +44,11 @@ void perintah(String perintah) {
    } 
   else if (perintah == "circle") {
     Serial.println("....");
-    katupVakum.bukaKatup();
+    katupVakum.nyalabukaVakum();
   }
   else if (perintah == "circle") {
     Serial.println("....");
-    katupVakum.tutupKatup();
-  }
-  else if (perintah == "circle") {
-    Serial.println("....");
-    katupVakum.matiVakum();
-  }
-  else if (perintah == "circle") {
-    Serial.println("....");
-    katupVakum.nyalaVakum();
+    katupVakum.matitutupVakum();
   }
   else {
     Serial.println("Perintah tidak dikenal: " + perintah);

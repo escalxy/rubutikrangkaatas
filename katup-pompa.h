@@ -12,19 +12,15 @@ class katupVakum {
     digitalWrite(RELAY_KATUP, 0); // 1 = kondisi off, 0 = kondisi on
   }
 
-  void bukaKatup() {
-      digitalWrite(RELAY_KATUP, LOW);                           
+  void nyalabukaVakum() {    
+      digitalWrite(RELAY_POMPA, HIGH);   
+      digitalWrite(RELAY_KATUP, LOW);         
     }
 
-  void tutupKatup() {          
-      digitalWrite(RELAY_KATUP, HIGH);              
+  void matitutupVakum() {
+      digitalWrite(RELAY_POMPA, LOW);
+      digitalWrite(RELAY_KATUP, HIGH);                    
     }
 
-  void matiVakum() {
-      digitalWrite(RELAY_POMPA, LOW);                    
-    }
-
-  void nyalaVakum() {    
-      digitalWrite(RELAY_POMPA, HIGH);            
-    }
+  
 };
