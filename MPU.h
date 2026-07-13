@@ -19,7 +19,7 @@ class Mpu {
     Serial.println(status);
 
     // Kalibrasi sensor
-    Serial.println("Mengkalibrasi Gyro, JANGAN GERAKKAN ROBOT...");
+    Serial.println("Mengkalibrasi MPU...");
     delay(1000);
     mpu.calcOffsets(); 
     Serial.println("Kalibrasi selesai!");
@@ -30,14 +30,16 @@ class Mpu {
 
     if (millis() - lastPrint > 1000) { //biar ngga spam
       
-      Serial.print(F("ACCELERO  X: "));Serial.print(mpu.getAccX()); //accelerometer
-      Serial.print("\tY: ");Serial.print(mpu.getAccY());
-      Serial.print("\tZ: ");Serial.println(mpu.getAccZ());
-
-      Serial.print(F("GYRO      X: "));Serial.print(mpu.getGyroX()); //gyroscope
-      Serial.print("\tY: ");Serial.print(mpu.getGyroY());
-      Serial.print("\tZ: ");Serial.println(mpu.getGyroZ());
-      
+      String dataMPU = "MPU," + Serial.print(F("ACCELERO  X: ")) + 
+          Serial.print(mpu.getAccX()) + "," + 
+          Serial.print(mpu.getAccY()) + "," + 
+          Serial.println(mpu.getAccZ()); //accelerometer
+          Serial.print(F("GYRO      X: ")) + 
+          Serial.print(mpu.getGyroX()) + "," + 
+          Serial.print(mpu.getGyroY()) + "," + 
+          Serial.println(mpu.getGyroZ()); //gyro
+          
+      Serial2.println(dataMPU); // Send data to Serial2
       lastPrint = millis(); // Reset timer
     }
   }
