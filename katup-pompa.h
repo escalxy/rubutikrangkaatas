@@ -1,26 +1,29 @@
-#define RELAY_KATUP 26
-#define RELAY_POMPA 25
-
 class katupVakum {
-  public: 
+  private:
+    uint8_t pinKatup;
+    uint8_t pinPompa;
+
+  public:
     katupVakum() {}
 
-  void setup() {
-    pinMode(RELAY_KATUP, OUTPUT);
-    pinMode(RELAY_POMPA, OUTPUT);
-    digitalWrite(RELAY_POMPA, 0); // 1 = kondisi off, 0 = kondisi on
-    digitalWrite(RELAY_KATUP, 0); // 1 = kondisi off, 0 = kondisi on
-  }
+    void setup(uint8_t relayKatupPin, uint8_t relayPompaPin) {
+      pinKatup = relayKatupPin;
+      pinPompa = relayPompaPin;
 
-  void nyalabukaVakum() {    
-      digitalWrite(RELAY_POMPA, HIGH);   
-      digitalWrite(RELAY_KATUP, LOW);         
+      pinMode(pinKatup, OUTPUT);
+      pinMode(pinPompa, OUTPUT);
+
+      digitalWrite(pinPompa, HIGH); // 1 = kondisi off
+      digitalWrite(pinKatup, HIGH); // 1 = kondisi off
     }
 
-  void matitutupVakum() {
-      digitalWrite(RELAY_POMPA, LOW);
-      digitalWrite(RELAY_KATUP, HIGH);                    
+    void nyalabukaVakum() {
+      digitalWrite(pinPompa, HIGH);
+      digitalWrite(pinKatup, LOW);
     }
 
-  
+    void matitutupVakum() {
+      digitalWrite(pinPompa, LOW);
+      digitalWrite(pinKatup, HIGH);
+    }
 };
