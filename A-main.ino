@@ -26,7 +26,7 @@ String input = "";
 
 void setup() {
   Serial.begin(9600);   
-  pinMode(LED, OUTPUT);
+  // pinMode(LED, OUTPUT);
   sensorMpu.setup();
   vakum.setup(RELAY_KATUP, RELAY_POMPA);
   servo.setup(SERVO_PIN);
@@ -67,14 +67,14 @@ void perintah(String cmd) {
     if (m == 1) {
       Serial.println("-> lengan maju");
       lengan.setArah(1);
-      digitalWrite(LED, HIGH);
+      // digitalWrite(LED, HIGH);
     } else if (m == -1) {
       Serial.println("-> lengan mundur");
       lengan.setArah(-1);
     } else if (m == 0) {
       Serial.println("-> lengan stop");
       lengan.setArah(0);
-      digitalWrite(LED, LOW);
+      // digitalWrite(LED, LOW);
     } else {
       Serial.println("Nilai m tidak valid (harus -1/0/1): " + String(m));
     }
@@ -98,5 +98,5 @@ void bacaSerial() {
 void loop() {
   sensorMpu.loop();  // kirim data MPU ke ROS lewat Serial (USB)
   bacaSerial();       // terima command dari ROS lewat Serial (USB)
-  lengan.update();    // WAJIB: cek limit switch untuk auto-stop motor DC
+  lengan.update();    
 }
