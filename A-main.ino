@@ -15,7 +15,7 @@
 // Relay
 #define RELAY_KATUP 27
 #define RELAY_POMPA 26
-#define LED 2
+// #define LED 2
 
 Mpu sensorMpu;
 katupVakum vakum;              
