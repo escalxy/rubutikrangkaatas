@@ -11,7 +11,6 @@ class Mpu {
     Mpu() : mpu(Wire) { lastSend = 0; }
 
     void setup() {
-      Wire.begin();
       byte status = mpu.begin();
       Serial.print("Status MPU6050: "); Serial.println(status);
       delay(1000);

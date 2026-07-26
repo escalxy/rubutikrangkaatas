@@ -1,9 +1,11 @@
-#define JGA_PWM_SPEED 200   // duty cycle PWM (0-255) -- silakan tuning
+const int freq = 20000;
+const int resolution = 8;
+int motorSpeed = 255;
 
 class GerakMotor {
   private:
     uint8_t pinAin1, pinAin2, pinPwmA;
-    int arah = 0;  // -1 mundur, 0 stop, 1 maju
+    int arah = 0;
 
   public:
     GerakMotor() {}
@@ -15,9 +17,10 @@ class GerakMotor {
 
       pinMode(pinAin1, OUTPUT);
       pinMode(pinAin2, OUTPUT);
-      pinMode(pinPwmA, OUTPUT);
 
-      berhenti();
+      ledcAttach(pinPwmA, freq, resolution);
+
+      stop();
     }
 
     void setArah(int arahBaru) {
@@ -25,23 +28,22 @@ class GerakMotor {
       if (arah == 1) {
         digitalWrite(pinAin1, HIGH);
         digitalWrite(pinAin2, LOW);
-        analogWrite(pinPwmA, JGA_PWM_SPEED);
+        ledcWrite(pinPwmA, motorSpeed);
       } else if (arah == -1) {
         digitalWrite(pinAin1, LOW);
         digitalWrite(pinAin2, HIGH);
-        analogWrite(pinPwmA, JGA_PWM_SPEED);
+        ledcWrite(pinPwmA, motorSpeed);
       } else {
-        berhenti();
+        stop();
       }
     }
 
-    void update() {
-    }
+    void update() {}
 
   private:
-    void berhenti() {
+    void stop() {
       digitalWrite(pinAin1, LOW);
       digitalWrite(pinAin2, LOW);
-      analogWrite(pinPwmA, 0);
+      ledcWrite(pinPwmA, 0);
     }
 };

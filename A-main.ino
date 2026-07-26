@@ -1,4 +1,5 @@
 #include <ArduinoJson.h>   
+#include <Wire.h>
 #include "mpu.h"
 #include "katup-pompa.h"   
 #include "servo.h"
@@ -8,14 +9,18 @@
 #define SERVO_PIN 15
 
 // Lengan
-#define PIN_AIN1 21
-#define PIN_AIN2 19
+#define PIN_AIN1 22
+#define PIN_AIN2 23
 #define PIN_PWMA 18
 
 // Relay
 #define RELAY_KATUP 27
 #define RELAY_POMPA 26
 // #define LED 2
+
+//MPU
+#define SDA_PIN 19
+#define SCL_PIN 21
 
 Mpu sensorMpu;
 katupVakum vakum;              
@@ -25,7 +30,8 @@ GerakMotor lengan;
 String input = "";
 
 void setup() {
-  Serial.begin(115200);   
+  Serial.begin(115200);
+  Wire.begin(SDA_PIN, SCL_PIN);   
   // pinMode(LED, OUTPUT);
   sensorMpu.setup();
   vakum.setup(RELAY_KATUP, RELAY_POMPA);

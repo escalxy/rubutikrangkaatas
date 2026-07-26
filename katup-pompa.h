@@ -18,12 +18,12 @@ class katupVakum {
     }
 
     void nyalabukaVakum() {
-      digitalWrite(pinPompa, HIGH);
-      digitalWrite(pinKatup, LOW);
+      digitalWrite(pinPompa, LOW);
+      digitalWrite(pinKatup, HIGH);
     }
 
     void matitutupVakum() {
-      digitalWrite(pinPompa, LOW);
-      digitalWrite(pinKatup, HIGH);
+      digitalWrite(pinPompa, HIGH);
+      digitalWrite(pinKatup, LOW);
     }
 };
