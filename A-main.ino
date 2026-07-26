@@ -25,7 +25,7 @@ GerakMotor lengan;
 String input = "";
 
 void setup() {
-  Serial.begin(9600);   
+  Serial.begin(115200);   
   // pinMode(LED, OUTPUT);
   sensorMpu.setup();
   vakum.setup(RELAY_KATUP, RELAY_POMPA);
@@ -98,5 +98,6 @@ void bacaSerial() {
 void loop() {
   sensorMpu.loop();  // kirim data MPU ke ROS lewat Serial (USB)
   bacaSerial();       // terima command dari ROS lewat Serial (USB)
-  lengan.update();    
+  lengan.update(); 
+  servo.update();   
 }
