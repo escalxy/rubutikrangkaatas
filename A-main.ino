@@ -9,18 +9,17 @@
 #define SERVO_PIN 15
 
 // Lengan
-#define PIN_AIN1 22
+#define PIN_AIN1 33
 #define PIN_AIN2 23
 #define PIN_PWMA 18
 
 // Relay
 #define RELAY_KATUP 27
 #define RELAY_POMPA 26
-// #define LED 2
 
 //MPU
-#define SDA_PIN 19
-#define SCL_PIN 21
+#define SDA_PIN 21
+#define SCL_PIN 22
 
 Mpu sensorMpu;
 katupVakum vakum;              
