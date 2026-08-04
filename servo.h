@@ -16,7 +16,7 @@ class gerakServo {
     }
 
     void gerakKe(int derajat) {
-      target = constrain(derajat, 0, 180); //edit maksimal turunnya
+      target = constrain(derajat, 0, 70); //edit maksimal turunnya
     }
 
     void gerakKanan() { gerakKe(180); }
